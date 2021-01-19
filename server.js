@@ -1,16 +1,17 @@
+
 const express = require('express'); // подключение фреймворка экспресс, оболочка над нод.джс
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server,{cors:{origin:"*"}});
-let port = process.env.PORT ||  9999;
-app.use(express.static('./build'));
-const rooms = new Map();
 
+
+app.use(express.static('./build'));
 app.use(express.json());
 
+let port = process.env.PORT ||  9999;
+const rooms = new Map();
 
-
- // метод для считывания из url данных. Какой-то петух назвал это словом парсить.
+ // app.use(express.urlencoded({extended: true})) метод для считывания из url данных. Какой-то петух назвал это словом парсить.
 app.get('/rooms/:idd', (req, res) => {
     const { idd: roomId } = req.params;
     const obj = rooms.has(roomId)
