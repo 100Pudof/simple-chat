@@ -7,6 +7,9 @@ app.use(express.static('./build'));
 const rooms = new Map();
 
 app.use(express.json());
+
+
+
  // метод для считывания из url данных. Какой-то петух назвал это словом парсить.
 app.get('/rooms/:idd', (req, res) => {
     const { idd: roomId } = req.params;
