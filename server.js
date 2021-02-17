@@ -11,7 +11,7 @@ app.use(express.json());
 let port = process.env.PORT ||  9999;
 const rooms = new Map();
 
- // app.use(express.urlencoded({extended: true})) метод для считывания из url данных. Какой-то петух назвал это словом парсить.
+ // app.use(express.urlencoded({extended: true})) метод для считывания из url данных. 
 app.get('/rooms/:idd', (req, res) => {
     const { idd: roomId } = req.params;
     const obj = rooms.has(roomId)
